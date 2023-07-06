@@ -14,7 +14,7 @@
                     <div class="col-md-3">   
                         <button 
                             type="button" 
-                            class="btn btn-primary btn-block" 
+                            class="btn btn-outline-primary" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarCategoria">
                             <i class="fas fa-plus"></i> [[#{categoria.agregar}]]
@@ -86,10 +86,10 @@
                                             <td>[[${categoria.descripcion}]]</td>
                                             <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
                                             <td><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
-                                                   class="btn btn-danger">
+                                                   class="btn btn-outline-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                                 <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
-                                                   class="btn btn-success">
+                                                   class="btn btn-outline-success">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>
                                 </table>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card text-center bg-success text-white mb-3">
+                        <div class="alert alert-warning text-center" role="alert">
                             <div class="card-body">
                                 <h3>[[#{categoria.total}]]</h3>
                                 <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalCategorias}]]</h4>

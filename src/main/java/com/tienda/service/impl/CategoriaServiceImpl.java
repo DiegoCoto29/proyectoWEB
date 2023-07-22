@@ -11,19 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
 
-    //la anotacion Autowired crea un unico objetos mientras se ejecuta el app
+    //La anotación Autowired crea un único objeto mientras se ejecuta el app
     @Autowired
     private CategoriaDao categoriaDao;
     
-    
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<Categoria> getCategorias(boolean activos) {
-        var lista=categoriaDao.findAll();
-        
-        if (activos){ //se deben eliminar los que no estan activos...
+        var lista=categoriaDao.findAll();        
+        if(activos) {  //Se deben eliminar los que no están activos...
             lista.removeIf(e -> !e.isActivo());
-        }
+        }        
         return lista;
     }
     

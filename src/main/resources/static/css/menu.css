@@ -31,13 +31,13 @@ body {
 }
 
 .logo {
-    font-size: 30px;
-    font-weight: bold;
-    padding: 0 40px;
-    line-height: 80px;
+   font-size: 30px;
+   font-weight: bold;
+   padding: 0 40px;
+   line-height: 80px;
 }
 
-.nav-menu{
+.nav-menu {
     display: flex;
     margin-right: 40px;
     list-style: none;
@@ -46,10 +46,11 @@ body {
 .nav-menu-item {
     font-size: 18px;
     margin: 0 10px;
-    line-height: 80px;
+     line-height: 80px;
 }
 
-.nav-menu-link:hover { 
+
+.nav-menu-link:hover {
     background-color: #024070;
     transition: 0.5s;
 }

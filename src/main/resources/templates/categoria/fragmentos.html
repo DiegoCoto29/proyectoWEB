@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
@@ -7,11 +6,11 @@
         <title>TechShop</title>
     </head>
     <body>
-        <!-- 1 SecciÃ³n para crear el boton de agregar... llamarÃ¡ a una ventana modal-->
+        <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">   
+                    <div class="col-md-3" sec:authorize='hasRole("ROLE_ADMIN")'>   
                         <button 
                             type="button" 
                             class="btn btn-primary btn-block" 
@@ -63,7 +62,7 @@
             </div>
         </section>
 
-        <!-- 3 SecciÃ³n principal para mostrar la informaccion de la entidad categoria -->
+        <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
         <section th:fragment="listadoCategorias" id="categorias">
             <div class="container">
                 <div class="row">
@@ -78,19 +77,21 @@
                                         <tr><th>#</th>
                                             <th>[[#{categoria.descripcion}]]</th>
                                             <th>[[#{categoria.activo}]]</th>
-                                            <th></th></tr>
+                                            <th sec:authorize='hasRole("ROLE_ADMIN")'></th></tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="categoria, contador : ${categorias}">
                                             <td>[[${contador.count}]]</td>
                                             <td>[[${categoria.descripcion}]]</td>
                                             <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
-                                            <td><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
+                                            <td sec:authorize='hasRole("ROLE_ADMIN")'>
+                                                <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                                 <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
                                                    class="btn btn-success">
-                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
+                                                    <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a>
+                                            </td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -111,7 +112,7 @@
             </div>
         </section>
 
-        <!-- 4 Fragmento que se utiliza en la pÃ¡gina modifca.html -->
+        <!-- 4 Fragmento que se utiliza en la página modifca.html -->
         <section th:fragment="editarCategoria">
             <div class="row">
                 <div class="col-md-2"></div>

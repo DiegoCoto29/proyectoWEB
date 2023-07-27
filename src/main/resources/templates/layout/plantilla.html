@@ -15,7 +15,7 @@
     <body>
 
         <header th:fragment="header" class="header">
-            <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+            <nav class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
                 <div class="container">
                     <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
                     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </nav>
-            <section id="main-header" class="py-2 bg-success text-white">
+            <section id="main-header" class="py-2 text-white" style="background-color: #024070">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">

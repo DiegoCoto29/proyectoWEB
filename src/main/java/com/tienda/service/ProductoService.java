@@ -3,9 +3,6 @@ package com.tienda.service;
 import com.tienda.domain.Producto;
 import java.util.List;
 
-import com.tienda.domain.Producto;
-import java.util.List;
-
 public interface ProductoService {
 
     //Se declara un método para obtener un ArrayList de Objetos Producto

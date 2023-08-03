@@ -8,10 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ *
+ * @author jmanu
+ */
 @Service
 public class ProductoServiceImpl implements ProductoService {
 
-    //La anotación Autowired crea un único objeto mientras se ejecuta el app
+    //La anotacion autowired crea un unico objeto sin hacer new.
     @Autowired
     private ProductoDao productoDao;
 
@@ -19,7 +23,7 @@ public class ProductoServiceImpl implements ProductoService {
     @Transactional(readOnly = true)
     public List<Producto> getProductos(boolean activos) {
         var lista = productoDao.findAll();
-        if (activos) {  //Se deben eliminar los que no están activos...
+        if (activos) {
             lista.removeIf(e -> !e.isActivo());
         }
         return lista;
@@ -42,7 +46,7 @@ public class ProductoServiceImpl implements ProductoService {
     public void delete(Producto producto) {
         productoDao.delete(producto);
     }
-    // Lista de productos con precio entre ordendados por descripción ConsultaAmpliada
+    
 
     @Override
     @Transactional(readOnly = true)
@@ -53,12 +57,13 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     @Transactional(readOnly = true)
     public List<Producto> metodoJPQL(double precioInf, double precioSup) {
-        return productoDao.metodoJPQL(precioInf, precioSup);
+        return productoDao.consultaJPQL(precioInf, precioSup);
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<Producto> metodoNativo(double precioInf, double precioSup) {
-        return productoDao.metodoNativo(precioInf, precioSup);
+        return productoDao.consultaSQL(precioInf, precioSup);
     }
+    
 }

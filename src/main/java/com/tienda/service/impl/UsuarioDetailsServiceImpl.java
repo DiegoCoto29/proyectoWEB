@@ -4,6 +4,7 @@ import com.tienda.dao.UsuarioDao;
 import com.tienda.domain.Rol;
 import com.tienda.domain.Usuario;
 import com.tienda.service.UsuarioDetailsService;
+import jakarta.servlet.http.HttpSession;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,37 +14,44 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("userDetailsService")
-public class UsuarioDetailsServiceImpl 
-        implements UsuarioDetailsService, UserDetailsService{
+public class UsuarioDetailsServiceImpl
+        implements UsuarioDetailsService, UserDetailsService {
 
     @Autowired
     private UsuarioDao usuarioDao;
     
+    @Autowired
+    private HttpSession session;
+
     @Override
-    public UserDetails loadUserByUsername(String username) 
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-        //se recupera el usuario que tiene el mismo username
-        Usuario usuario= usuarioDao.findByUsername(username);
-        
-        //se verifica que si se carga un usuario -que exista-
-        if (usuario==null){
-            //no se encontró el usuario
+        //Se busca en la tabla de usuario si existe un usuario con el username
+        Usuario usuario = usuarioDao.findByUsername(username);
+
+        //Se valida si existe un usuario con ese username
+        if (usuario == null) {
             throw new UsernameNotFoundException(username);
         }
-        //si estamos acá, entonces si hay un usuario con ese username
-        //se recuperan los roles del usuario
+        //Si se ejecuta lo siguiente es porque SI existe el usuario con ese username...
+
+        session.removeAttribute("imagenUsuario");
+        session.setAttribute("imagenUsuario", usuario.getRutaImagen());
         
-        var roles=new ArrayList<GrantedAuthority>();
-        
-        for (Rol rol:usuario.getRoles()){
+        //Se recuperan los roles que tiene el usuario...
+        var roles = new ArrayList<GrantedAuthority>();
+        for (Rol rol : usuario.getRoles()) {
             roles.add(new SimpleGrantedAuthority(rol.getNombre()));
         }
-        
-        return new User(usuario.getUsername(),usuario.getPassword(),roles);
-}
-    
-}
-    
 
+        //Se retorna un User con la información para el sistema de seguridad SPRING
+        return new User(usuario.getUsername(),
+                usuario.getPassword(),
+                roles);
+    }
+
+}

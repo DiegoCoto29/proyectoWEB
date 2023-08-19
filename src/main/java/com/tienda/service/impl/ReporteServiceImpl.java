@@ -35,7 +35,7 @@ public class ReporteServiceImpl implements ReporteService {
 
     @Override
     public ResponseEntity<Resource>
-            generarReporte(
+            generateReporte(
                     String reporte,
                     Map<String, Object> parametros,
                     String tipo) throws IOException {
@@ -74,9 +74,9 @@ public class ReporteServiceImpl implements ReporteService {
 
             //se inicia el proceso para responderle al usuario
             //se define el tipo de salida de la respuesta
-            MediaType mediaType = null;
+            MediaType mediaType=null;
             //se establece el string para hacer el archivo de salida
-            String archivoSalida = "";
+            String archivoSalida="";
 
             //se usa un arreglo de byte para extraer la info generada
             byte[] data;
@@ -89,7 +89,7 @@ public class ReporteServiceImpl implements ReporteService {
                                     reporteJasper,
                                     salida);
                     mediaType = MediaType.APPLICATION_PDF;
-                    archivoSalida = reporte + ".pdf";
+                    archivoSalida = reporte+".pdf";
                 }
                 case "Xls" -> {
                     JRXlsxExporter exportador = new JRXlsxExporter();
@@ -121,15 +121,19 @@ public class ReporteServiceImpl implements ReporteService {
                     archivoSalida = reporte + ".csv";
                 }
             }
+            
+            
+            
+            
 
-            //se recuperan los bytes del reporte generado
-            data = salida.toByteArray();
-
-            //se definen los encabezados de la pagina a responder o descargar
-            HttpHeaders headers = new HttpHeaders();
-            headers.set("Content-Disposition",
-                    estilo + "filename=\"" + archivoSalida + "\"");
-
+           //se recuperan los bytes del reporte generado
+           data=salida.toByteArray();
+           
+           //se definen los encabezados de la pagina a responder o descargar
+           HttpHeaders headers = new HttpHeaders();
+           headers.set("Content-Disposition",
+                  estilo+"filename=\""+archivoSalida+"\"");
+            
             //se retorna la respuesta al usuario
             return ResponseEntity
                     .ok()
@@ -137,11 +141,13 @@ public class ReporteServiceImpl implements ReporteService {
                     .contentType(mediaType)
                     .body(
                             new InputStreamResource(
-                                    new ByteArrayInputStream(data)));
-
+                                new ByteArrayInputStream
+                                        (data)));
+                    
         } catch (SQLException | JRException e) {
             e.printStackTrace();
         }
         return null;
     }
+
 }

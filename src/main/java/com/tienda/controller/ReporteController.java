@@ -21,29 +21,28 @@ public class ReporteController {
     @GetMapping("/principal")
     public String principal(Model model) {
         return "/reportes/principal";
-
     }
 
-    @GetMapping("/ventasp")
-    public ResponseEntity<Resource> ventas(@RequestParam String tipo) throws IOException {
+    @GetMapping("/ventas1")
+    public ResponseEntity<Resource> ventas1(@RequestParam String tipo) throws IOException {
         return reporteService.generateReporte(
-                "ventasp",
+                "ventas1",
                 null,
                 tipo);
     }
 
-    @GetMapping("/productosp")
-    public ResponseEntity<Resource> productosp(@RequestParam String tipo) throws IOException {
+    @GetMapping("/productos1")
+    public ResponseEntity<Resource> productos1(@RequestParam String tipo) throws IOException {
         return reporteService.generateReporte(
-                "productosp",
+                "productos1",
                 null,
                 tipo);
     }
 
-    @GetMapping("/facturasp")
-    public ResponseEntity<Resource> facturasp(@RequestParam String tipo) throws IOException {
+    @GetMapping("/facturas1")
+    public ResponseEntity<Resource> facturas1(@RequestParam String tipo) throws IOException {
         return reporteService.generateReporte(
-                "facturasp",
+                "facturas1",
                 null,
                 tipo);
     }

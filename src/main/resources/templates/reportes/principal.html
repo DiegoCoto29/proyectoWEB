@@ -7,68 +7,70 @@
     </head>
     
         <header th:replace="~{layout/plantilla :: header}"/>
+        <br>
         <div class="container">
             <div class="row"></div>
             <div class="row row-cols-6" >
-                <a th:href="@{/}" class="btn btn-primary">
-                    <i class='fas fa-reply'></i> [[#{accion.regresar}]]</a>
+                <a th:href="@{/}" class="btn btn-outline-primary">
+                    <i class='fas fa-reply'></i> [[#{accion.regresar}]]</a>       
             </div>
+            <br>
             <div class="row"></div>
             <div class="row row-cols-3">
                 <div class="card">
-                    <div class="card-header text-center">
+                    <div class="card-header text-center text-white" style="background-color: #024070">
                         Reporte ventas
                     </div>
-                    <div class="card-body">
-                        <a th:href="@{/reportes/ventas1?tipo=vPdf}" class="btn btn-primary">
+                    <div class="card-body text-center" style="background-color: #000000">
+                        <a th:href="@{/reportes/ventas1?tipo=vPdf}" class="btn btn-outline-primary">
                             <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i>
                         </a>
-                        <a th:href="@{/reportes/ventas1?tipo=Pdf}" class="btn btn-success">
+                        <a th:href="@{/reportes/ventas1?tipo=Pdf}" class="btn btn-outline-success">
                             <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i>
                         </a>
-                        <a th:href="@{/reportes/ventas1?tipo=Xls}" class="btn btn-warning">
+                        <a th:href="@{/reportes/ventas1?tipo=Xls}" class="btn btn-outline-warning">
                             <i class='fas fa-download'></i><i class='fas fa-file-excel'></i>
                         </a>
-                        <a th:href="@{/reportes/ventas1?tipo=Csv}" class="btn btn-danger">
+                        <a th:href="@{/reportes/ventas1?tipo=Csv}" class="btn btn-outline-danger">
                             <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>
                         </a>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header text-center">
+                    <div class="card-header text-center text-white" style="background-color: #024070">
                         Reporte productos
                     </div>
-                    <div class="card-body">
-                        <a th:href="@{/reportes/productos1?tipo=vPdf}" class="btn btn-primary">
+                    <div class="card-body text-center" style="background-color: #000000">
+                        <a th:href="@{/reportes/productos1?tipo=vPdf}" class="btn btn-outline-primary">
                             <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i>
                         </a>
-                        <a th:href="@{/reportes/productos1?tipo=Pdf}" class="btn btn-success">
+                        <a th:href="@{/reportes/productos1?tipo=Pdf}" class="btn btn-outline-success">
                             <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i>
                         </a>
-                        <a th:href="@{/reportes/productos1?tipo=Xls}" class="btn btn-warning">
+                        <a th:href="@{/reportes/productos1?tipo=Xls}" class="btn btn-outline-warning">
                             <i class='fas fa-download'></i><i class='fas fa-file-excel'></i>
                         </a>
-                        <a th:href="@{/reportes/productos1?tipo=Csv}" class="btn btn-danger">
+                        <a th:href="@{/reportes/productos1?tipo=Csv}" class="btn btn-outline-danger">
                             <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="card">
-                    <div class="card-header text-center">
+                    <div class="card-header text-center text-white" style="background-color: #024070">
                         Reporte facturas
                     </div>
-                    <div class="card-body">
-                        <a th:href="@{/reportes/facturas1?tipo=vPdf}" class="btn btn-primary">
+                    <div class="card-body text-center" style="background-color: #000000">
+                        <a th:href="@{/reportes/facturas1?tipo=vPdf}" class="btn btn-outline-primary">
                             <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i>
                         </a>
-                        <a th:href="@{/reportes/facturas1?tipo=Pdf}" class="btn btn-success">
+                        <a th:href="@{/reportes/facturas1?tipo=Pdf}" class="btn btn-outline-success">
                             <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i>
                         </a>
-                        <a th:href="@{/reportes/facturas1?tipo=Xls}" class="btn btn-warning">
+                        <a th:href="@{/reportes/facturas1?tipo=Xls}" class="btn btn-outline-warning">
                             <i class='fas fa-download'></i><i class='fas fa-file-excel'></i>
                         </a>
-                        <a th:href="@{/reportes/facturas1?tipo=Csv}" class="btn btn-danger">
+                        <a th:href="@{/reportes/facturas1?tipo=Csv}" class="btn btn-outline-danger">
                             <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>
                         </a>
                     </div>

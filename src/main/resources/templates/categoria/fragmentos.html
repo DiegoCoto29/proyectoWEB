@@ -13,7 +13,7 @@
                     <div class="col-md-3" sec:authorize="hasRole('ROLE_ADMIN')">
                         <button 
                             type="button" 
-                            class="btn btn-primary btn-block" 
+                            class="btn btn-outline-primary btn-block" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarCategoria">
                             <i class="fas fa-plus"></i> [[#{categoria.agregar}]]
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
+                                <button class="btn btn-outline-primary" type="submit">Guardar</button>
                             </div>
                         </form>
                     </div>
@@ -67,12 +67,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
+                        <div>
+                            <div class="badge text-bg-primary">
                                 <h4>[[#{categoria.listado}]]</h4>
                             </div>
                             <div th:if="${categorias != null and !categorias.empty}">
-                                <table class="table table-striped table-hover">
+                                <table class="table table-dark table-striped-columns text-center">
                                     <thead class="table-dark">
                                         <tr><th>#</th>
                                             <th>[[#{categoria.descripcion}]]</th>
@@ -85,10 +85,10 @@
                                             <td>[[${categoria.descripcion}]]</td>
                                             <td th:text="${categoria.activo} ? 'Activa' : 'Inactiva'" />
                                             <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
-                                                   class="btn btn-danger">
+                                                   class="btn btn-outline-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
                                                 <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
-                                                   class="btn btn-success">
+                                                   class="btn btn-outline-success">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>
                                 </table>
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div class="card text-center bg-success text-white mb-3">
+                        <div class="card text-center badge text-bg-warning">
                             <div class="card-body">
                                 <h3>[[#{categoria.total}]]</h3>
                                 <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalCategorias}]]</h4>
@@ -167,18 +167,18 @@
             <div class="container py-4 mb-4 bg-light">
                 <div class="row">
                     <div class="col-md-4 d-grid">
-                        <a th:href="@{/categoria/listado}" class="btn btn-primary">
+                        <a th:href="@{/categoria/listado}" class="btn btn-outline-primary">
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">                                
                         <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
-                           class="btn btn-danger">
+                           class="btn btn-outline-danger">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-outline-success">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>

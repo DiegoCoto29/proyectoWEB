@@ -50,7 +50,7 @@
                 <button
                     type="submit"
                     class="btn btn-outline-primary">
-                    <i class="fas fa-cart-plus"></i>
+                    <i class="bi bi-cart4"></i>
                     [[#{carrito.verCarrito}]] [[${listaTotal}]]
                 </button>
             </form>
@@ -113,18 +113,18 @@
                                 </h4>
                             </div>
                         </div>
-                        <div class="card text-center bg-warning text-dark mb-3">
+                        <div class="card text-center bg-success text-white mb-3">
                             <div class="card-body">
                                 <a th:href="@{/}"
-                                   class="btn btn-outline-warning">
+                                   class="btn btn-success">
                                     <i class='fas fa-reply'></i> [[#{carrito.seguirComprando}]]
                                 </a>
                             </div>
                         </div>
-                        <div class="card text-center bg-success text-white mb-3">
+                        <div class="card text-center bg-info text-white mb-3">
                             <div class="card-body">
                                 <a th:href="@{/facturar/carrito}"
-                                   class="btn btn-outline-success">
+                                   class="btn btn-info">
                                     <i class='fas fa-fordward'></i> [[#{carrito.facturar}]]
                                 </a>
                             </div>
